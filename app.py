@@ -229,6 +229,25 @@ def historial():
             r['hora_reserva'] = (datetime.min + r['hora_reserva']).time()
 
     return render_template('historial.html', reservas=reservas)
+@app.route('/reservar/<int:id_mesa>')
+def reservar(id_mesa):
+    db = get_connection()
+    cursor = db.cursor(dictionary=True)
+
+    # Buscar si hay reserva activa
+    cursor.execute("""
+        SELECT r.*, c.nombres, c.apellidos
+        FROM reservas r
+        JOIN clientes c ON r.id_cliente = c.id_cliente
+        WHERE r.id_mesa = %s AND r.estado = 'reservada'
+        ORDER BY r.fecha_reserva DESC
+        LIMIT 1
+    """, (id_mesa,))
+    reserva = cursor.fetchone()
+    db.close()
+
+    return render_template('reservar.html', reserva=reserva, id_mesa=id_mesa)
+
 
 
 if __name__ == '__main__':
