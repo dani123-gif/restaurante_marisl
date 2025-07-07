@@ -1,3 +1,14 @@
+<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<meta name="theme-color" content="#A93226">
+<link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/static/service-worker.js')
+      .then(reg => console.log("✔️ Service Worker registrado", reg))
+      .catch(err => console.log("❌ Error al registrar SW:", err));
+  }
+</script>
 <!DOCTYPE html>
 <html lang="es">
 <head>

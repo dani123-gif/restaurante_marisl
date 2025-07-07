@@ -1,0 +1,21 @@
+{
+  "name": "Restaurante Marisol",
+  "short_name": "Marisol",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#A93226",
+  "description": "Sistema de pedidos y reservas del Restaurante Marisol",
+  "icons": [
+    {
+      "src": "/static/img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
